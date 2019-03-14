@@ -17,14 +17,14 @@ public class LoginPage
     }
     public void TypeUserName()
     {
-        driver.findElement(UserName).SendKeys("standard_user");
+        driver.FindElement(UserName).SendKeys("standard_user");
     }
     public void TypePassword()
     {
-        driver.findElement(Password).SendKeys("secret_sauce");
+        driver.FindElement(Password).SendKeys("secret_sauce");
     }
     public void ClickOnLoginButton()
     {
-        driver.findElement(loginButton).Click();
+        driver.FindElement(loginButton).Click();
     }
 }
