@@ -8,7 +8,7 @@ public class LoginPage
     IWebDriver driver;
     By UserName = By.Id("user-name");  
     By Password = By.Id("password");
-    By loginButton = By.ClassName("login-button");
+    By loginButton = By.ClassName("btn_action");
 
     public LoginPage(IWebDriver driver)
     {

@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="LoginPage.cs" />
     <Compile Include="SauceLogin.cs" />
-    <Compile Include="UnitTest1 Page Object.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

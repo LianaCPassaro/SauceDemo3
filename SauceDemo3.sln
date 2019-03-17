@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SauceDemo3", "SauceDemo3\SauceDemo3.csproj", "{B42813E3-EB82-4DB0-AA48-EA1B58C45E45}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{29C784EF-48FF-4442-BB71-6AB367C406CC}"
-	ProjectSection(SolutionItems) = preProject
-		LoginPage.cs = LoginPage.cs
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

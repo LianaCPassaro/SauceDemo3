@@ -14,7 +14,6 @@ namespace SauceDemo3
     [TestClass]
     public class SauceLogin
     {
-        [TestMethod]
         public void VerifySauceLogin()
         {
             IWebDriver driver = new ChromeDriver();
