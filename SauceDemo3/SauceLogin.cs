@@ -14,6 +14,7 @@ namespace SauceDemo3
     [TestClass]
     public class SauceLogin
     {
+        [TestMethod]
         public void VerifySauceLogin()
         {
             IWebDriver driver = new ChromeDriver();
@@ -23,6 +24,7 @@ namespace SauceDemo3
             login.TypeUserName();
             login.TypePassword();
             login.ClickOnLoginButton();
+            Assert.IsTrue(login.VerifyURL());
             driver.Quit();
         }
 
