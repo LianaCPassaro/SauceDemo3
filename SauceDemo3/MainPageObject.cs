@@ -12,14 +12,14 @@ namespace SauceDemo3
     class MainPageObject
     {
 
-    IWebDriver driver;
+        IWebDriver driver;
 
-    public MainPageObject(IWebDriver driver)
-    {
-        this.driver = driver;
-    }
+        public MainPageObject(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
 
-    public string FindArticle()
+        public string FindArticle()
         {
             string vacio = "vacio";
             ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.TagName("a"));
@@ -32,8 +32,21 @@ namespace SauceDemo3
                 }
             }
             return vacio;
-            
+        }
 
+        public void OpenArticle()
+        {
+
+            ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.TagName("a"));
+            foreach (IWebElement anchor in anchorLists)
+            {
+                if (anchor.Text.Contains("Sauce Labs Onesie"))
+                {
+                    anchor.Click();
+                    break;
+                }
+            }
         }
     }
 }
+
