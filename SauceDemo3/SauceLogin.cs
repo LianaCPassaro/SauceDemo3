@@ -16,7 +16,8 @@ namespace SauceDemo3
             login.TypeUserName();
             login.TypePassword();
             login.ClickOnLoginButton();
-            Assert.IsTrue(login.VerifyURL());
+            Assert.IsTrue(login.VerifyURL("https://www.saucedemo.com/inventory.html"));
+            driver.Quit();
         }
         [TestMethod]
         public void VerifyMainPage()
@@ -31,12 +32,22 @@ namespace SauceDemo3
             MainPageObject mainPage = new MainPageObject(driver);
             string article = mainPage.FindArticle();
             Assert.AreEqual(article, "Sauce Labs Onesie");
+            driver.Quit();
         }
-        //[TestCleanup]
-        //public void Close(IWebDriver driver)
-        //{
-        //    driver.Quit();
-        //}
+        [TestMethod]
+        public void VerifyAccesToDetail()
+        {
+            IWebDriver driver = new ChromeDriver();
+            LoginPageObject login = new LoginPageObject(driver);
+            login.AccessUrl();
+            login.TypeUserName();
+            login.TypePassword();
+            login.ClickOnLoginButton();
 
+            MainPageObject mainPage = new MainPageObject(driver);
+            mainPage.OpenArticle();
+            Assert.IsTrue(login.VerifyURL("https://www.saucedemo.com/inventory-item.html?id=2"));
+            driver.Quit();
+        }
     }
 }

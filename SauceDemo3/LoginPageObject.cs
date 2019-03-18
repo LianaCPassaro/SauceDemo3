@@ -40,9 +40,9 @@ public class LoginPageObject
     {
         driver.FindElement(By.ClassName("btn_action")).Click();
     }
-    public bool VerifyURL()
+    public bool VerifyURL(string url)
     {
-        bool main = driver.Url.Contains("https://www.saucedemo.com/inventory.html");
+        bool main = driver.Url.Contains(url);
         return main;
     }
 }
