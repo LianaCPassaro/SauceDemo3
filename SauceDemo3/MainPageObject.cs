@@ -33,7 +33,10 @@ namespace SauceDemo3
             }
             return vacio;
         }
-
+        public void AddToCartButton()
+        {
+            driver.FindElement(By.ClassName("btn_primary btn_inventory")).Click();
+        }
         public void OpenArticle()
         {
 
@@ -47,6 +50,11 @@ namespace SauceDemo3
                 }
             }
         }
+        //public int CountCartArticle()
+        //{
+        //    int count = driver.FindElement(By.ClassName("shopping_cart_badge")).GetAttribute(innertext);
+        //    return count;
+        //}
     }
 }
 

@@ -16,7 +16,7 @@ namespace SauceDemo3
             login.TypeUserName();
             login.TypePassword();
             login.ClickOnLoginButton();
-            Assert.IsTrue(login.VerifyURL("https://www.saucedemo.com/inventory.html"));
+            Assert.AreEqual(login.GetURL(),"https://www.saucedemo.com/inventory.html");
             driver.Quit();
         }
         [TestMethod]
@@ -49,5 +49,22 @@ namespace SauceDemo3
             Assert.IsTrue(login.VerifyURL("https://www.saucedemo.com/inventory-item.html?id=2"));
             driver.Quit();
         }
+        //public void VerifyAdd()
+        //{
+        //    IWebDriver driver = new ChromeDriver();
+        //    LoginPageObject login = new LoginPageObject(driver);
+        //    login.AccessUrl();
+        //    login.TypeUserName();
+        //    login.TypePassword();
+        //    login.ClickOnLoginButton();
+
+        //    MainPageObject mainPage = new MainPageObject(driver);
+        //    mainPage.AddToCartButton();
+        //    mainPage.CountCartArticle();
+
+           
+
+
+        //}
     }
 }

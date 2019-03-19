@@ -27,10 +27,13 @@ public class LoginPageObject
         driver.Navigate().GoToUrl("https://www.saucedemo.com/");
         driver.Manage().Window.Maximize();
     }
-
     public void TypeUserName()
     {
         driver.FindElement(By.Id("user-name")).SendKeys("standard_user");
+    }
+    public IWebElement getUserName()
+    {
+        return driver.FindElement(By.Id("user-name"));
     }
     public void TypePassword()
     {
@@ -44,5 +47,9 @@ public class LoginPageObject
     {
         bool main = driver.Url.Contains(url);
         return main;
+    }
+    public string GetURL()
+    {
+        return driver.Url;
     }
 }
