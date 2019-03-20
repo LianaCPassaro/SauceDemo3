@@ -1,6 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using System.Web;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SauceDemo3
 {
@@ -32,7 +39,9 @@ namespace SauceDemo3
         public void ArticlePresent()
         {
             mainPage = new MainPageObject(driver);
-            Assert.AreEqual(mainPage.FindArticle("Sauce Labs Onesie"), "Sauce Labs Onesie");
+
+            IWebElement articleName = mainPage.FindArticle("Sauce Labs Onesie");
+            Assert.IsNotNull(articleName.Text);
         }
         [TestMethod]
         public void VerifyAccesToDetail()

@@ -21,17 +21,9 @@ namespace SauceDemo3
 
         public IWebElement FindArticle(string description)
         {
-           // IWebElement empty = ;
             ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.TagName("a"));
-            foreach (IWebElement anchor in anchorLists)
-            {
-                if (anchor.Text.Contains(description))
-                {
-                    return anchor;
 
-                }
-            }
-            return null;
+            return anchorLists.FirstOrDefault(x => x.Text == description);
         }
 
         public void AddToCartButton()
