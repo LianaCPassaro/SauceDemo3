@@ -19,37 +19,26 @@ namespace SauceDemo3
             this.driver = driver;
         }
 
-        public string FindArticle()
+        public IWebElement FindArticle(string description)
         {
-            string vacio = "vacio";
+           // IWebElement empty = ;
             ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.TagName("a"));
             foreach (IWebElement anchor in anchorLists)
             {
-                if (anchor.Text.Contains("Sauce Labs Onesie"))
+                if (anchor.Text.Contains(description))
                 {
-                    return anchor.Text;
+                    return anchor;
 
                 }
             }
-            return vacio;
+            return null;
         }
+
         public void AddToCartButton()
         {
             driver.FindElement(By.ClassName("btn_primary btn_inventory")).Click();
         }
-        public void OpenArticle()
-        {
-
-            ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.TagName("a"));
-            foreach (IWebElement anchor in anchorLists)
-            {
-                if (anchor.Text.Contains("Sauce Labs Onesie"))
-                {
-                    anchor.Click();
-                    break;
-                }
-            }
-        }
+        
         //public int CountCartArticle()
         //{
         //    int count = driver.FindElement(By.ClassName("shopping_cart_badge")).GetAttribute(innertext);
