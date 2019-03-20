@@ -15,41 +15,38 @@ public class LoginPageObject
 {
     IWebDriver driver;
 
-
     public LoginPageObject(IWebDriver driver)
     {
         this.driver = driver;
     }
 
-    public void AccessUrl()
+    public void SetUrl(string url)
     {
-       // driver = new ChromeDriver();
-        driver.Navigate().GoToUrl("https://www.saucedemo.com/");
+        driver.Navigate().GoToUrl(url);
         driver.Manage().Window.Maximize();
-    }
-    public void TypeUserName()
-    {
-        driver.FindElement(By.Id("user-name")).SendKeys("standard_user");
-    }
-    public IWebElement getUserName()
-    {
-        return driver.FindElement(By.Id("user-name"));
-    }
-    public void TypePassword()
-    {
-        driver.FindElement(By.Id("password")).SendKeys("secret_sauce");
-    }
-    public void ClickOnLoginButton()
-    {
-        driver.FindElement(By.ClassName("btn_action")).Click();
-    }
-    public bool VerifyURL(string url)
-    {
-        bool main = driver.Url.Contains(url);
-        return main;
     }
     public string GetURL()
     {
         return driver.Url;
     }
+    public void SetCredential(string attrib, string value)
+    {
+        GetCredential(attrib).SendKeys(value);
+    }
+
+    public IWebElement GetCredential(string attrib)
+    {
+        return driver.FindElement(By.Id(attrib));
+    }
+
+    public IWebElement GetButton(string btnLogin)
+    {
+        return driver.FindElement(By.ClassName(btnLogin));
+    }
+    public void SetButton(string btnLogin)
+    {
+        GetButton(btnLogin).Click();
+    }
+
+
 }
