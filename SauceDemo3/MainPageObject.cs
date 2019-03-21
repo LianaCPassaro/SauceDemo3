@@ -25,17 +25,24 @@ namespace SauceDemo3
 
             return anchorLists.FirstOrDefault(x => x.Text == description);
         }
-
-        public void AddToCartButton()
+        public IWebElement GetCartButton(string addToCart)
         {
-            driver.FindElement(By.ClassName("btn_primary btn_inventory")).Click();
+            return driver.FindElement(By.ClassName(addToCart));
         }
-        
-        //public int CountCartArticle()
-        //{
-        //    int count = driver.FindElement(By.ClassName("shopping_cart_badge")).GetAttribute(innertext);
-        //    return count;
-        //}
+
+        public void SetCartButton(string addToCart)
+        {
+            GetCartButton(addToCart).Click();
+        }
+
+        public IWebElement CountCartArticle(string counter)
+        {
+            IWebElement count = driver.FindElement(By.ClassName("fa-layers-counter"));
+           // count.Click();
+            count.GetProperty("InnerText").ToString();
+            return count;
+
+        }
     }
 }
 

@@ -41,29 +41,32 @@ namespace SauceDemo3
             mainPage = new MainPageObject(driver);
 
             IWebElement articleName = mainPage.FindArticle("Sauce Labs Onesie");
-            Assert.IsNotNull(articleName.Text);
+            Assert.IsNotNull(articleName.Text,"The article was not been found");
         }
         [TestMethod]
         public void VerifyAccesToDetail()
         {
             mainPage = new MainPageObject(driver);
-            mainPage.FindArticle("Sauce Labs Onesie").Click();
-            Assert.AreEqual(login.GetURL(),"https://www.saucedemo.com/inventory-item.html?id=2");
+            IWebElement articleName = mainPage.FindArticle("Sauce Labs Onesie");
+            if (articleName.Text != "null")
+            {
+                articleName.Click();
+                Assert.AreEqual(login.GetURL(), "https://www.saucedemo.com/inventory-item.html?id=2");
+            }
+            else
+            {
+                Console.WriteLine("The article detail URL is not correct.");
+            }
         }
-        //public void VerifyAdd()
-        //
-        //    IWebDriver driver = new ChromeDriver();
-        //    LoginPageObject login = new LoginPageObject(driver);
-        //    login.AccessUrl();
-        //    login.TypeUserName();
-        //    login.TypePassword();
-        //    login.ClickOnLoginButton();
+        [TestMethod]
+        public void AddToCart()
+        {
+         mainPage = new MainPageObject(driver);
+         mainPage.SetCartButton("btn_inventory");
+            Assert.AreEqual(mainPage.CountCartArticle("fa-layers-counter"), 1);
+        }
 
-        //    MainPageObject mainPage = new MainPageObject(driver);
-        //    mainPage.AddToCartButton();
-        //    mainPage.CountCartArticle();
-        //}
-        [TestCleanup]
+    [TestCleanup]
         public void TearDown()
         {
             driver.Quit();
