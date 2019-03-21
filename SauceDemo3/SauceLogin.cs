@@ -51,7 +51,7 @@ namespace SauceDemo3
             Assert.AreEqual(login.GetURL(),"https://www.saucedemo.com/inventory-item.html?id=2");
         }
         //public void VerifyAdd()
-        //{
+        //
         //    IWebDriver driver = new ChromeDriver();
         //    LoginPageObject login = new LoginPageObject(driver);
         //    login.AccessUrl();
