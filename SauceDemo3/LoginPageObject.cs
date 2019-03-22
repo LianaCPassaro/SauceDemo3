@@ -29,15 +29,22 @@ public class LoginPageObject
     {
         return driver.Url;
     }
-    public void SetCredential(string attrib, string value)
+    public void SetInput(string attrib, string value)
     {
-        GetCredential(attrib).SendKeys(value);
+        GetInput(attrib).SendKeys(value);
     }
 
-    public IWebElement GetCredential(string attrib)
+    public IWebElement GetInput(string attrib)
     {
         return driver.FindElement(By.Id(attrib));
     }
+    
+    //public IWebElement GetElement(Type //id, name, css, string selector)
+    //{
+        
+    //    return driver.FindElement(By.type(selector));
+    //}
+
 
     public IWebElement GetButton(string btnLogin)
     {

@@ -25,8 +25,8 @@ namespace SauceDemo3
             driver = new ChromeDriver();
             login = new LoginPageObject(driver);
             login.SetUrl("https://www.saucedemo.com/");
-            login.SetCredential("user-name", "standard_user");
-            login.SetCredential("password", "secret_sauce");
+            login.SetInput("user-name", "standard_user");
+            login.SetInput("password", "secret_sauce");
             login.SetButton("btn_action");
         }
 
@@ -55,21 +55,21 @@ namespace SauceDemo3
             }
             else
             {
-                Console.WriteLine("The article detail URL is not correct.");
+                throw new System.ArgumentException("Parameter cannot be null", articleName.Text);
             }
         }
         [TestMethod]
         public void AddToCart()
         {
          mainPage = new MainPageObject(driver);
-         mainPage.SetCartButton("btn_inventory");
-            Assert.AreEqual(mainPage.CountCartArticle("fa-layers-counter"), 1);
+         mainPage.ClickCartButton("btn_inventory");
+         Assert.AreEqual(mainPage.CountCartArticle("fa-layers-counter"), "1");
         }
 
     [TestCleanup]
         public void TearDown()
         {
-            driver.Quit();
+           // driver.Quit();
         }
     }
 }

@@ -30,17 +30,18 @@ namespace SauceDemo3
             return driver.FindElement(By.ClassName(addToCart));
         }
 
-        public void SetCartButton(string addToCart)
+        public void ClickCartButton(string addToCart)
         {
             GetCartButton(addToCart).Click();
         }
 
-        public IWebElement CountCartArticle(string counter)
+        public string CountCartArticle(string counter)
         {
-            IWebElement count = driver.FindElement(By.ClassName("fa-layers-counter"));
-           // count.Click();
-            count.GetProperty("InnerText").ToString();
-            return count;
+            return driver.FindElement(By.ClassName("fa-layers-counter")).Text;
+            // count.Click();
+            //count.Text;
+            //count.GetProperty("InnerText").ToString();
+           //  count;
 
         }
     }
