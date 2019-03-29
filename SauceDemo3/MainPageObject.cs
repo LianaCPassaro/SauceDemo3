@@ -27,7 +27,7 @@ namespace SauceDemo3
         }
         public bool FindCountCart(string description)
         {
-            ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.ClassName("description"));
+            ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.ClassName("a"));
 
             return anchorLists.Any(x => x.Text == description);
         }
