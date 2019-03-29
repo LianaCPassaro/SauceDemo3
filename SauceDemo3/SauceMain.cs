@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace SauceDemo3
 {
@@ -58,7 +59,7 @@ namespace SauceDemo3
         {
          mainPage = new MainPageObject(driver);
          mainPage.ClickCartButton("btn_primary");
-         Assert.AreEqual(mainPage.CountCartArticle("fa-layers-counter"), "1");
+        Assert.AreEqual(mainPage.CountCartArticle("fa-layers-counter"), "1");
         }
         [TestMethod]
         public void RemoveToCartDisplayed()
@@ -84,10 +85,10 @@ namespace SauceDemo3
             mainPage = new MainPageObject(driver);
             mainPage.ClickCartButton("btn_primary");
             mainPage.ClickCartButton("btn_secondary");
-            Assert.IsFalse(mainPage.FindCountCart("fa-layers-counter"));
+            Assert.IsFalse(mainPage.FindCountCart("fa-layers-counter","0"));
+            //Assert.IsTrue(mainPage.FindCountCart("fa-layers-counter","1"));
         }
-
-
+        
         [TestCleanup]
         public void TearDown()
         {

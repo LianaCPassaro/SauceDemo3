@@ -25,11 +25,11 @@ namespace SauceDemo3
 
             return anchorLists.FirstOrDefault(x => x.Text == description);
         }
-        public bool FindCountCart(string description)
+        public bool FindCountCart(string description, string count)
         {
-            ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.ClassName("a"));
+            ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.ClassName(description));
 
-            return anchorLists.Any(x => x.Text == description);
+            return anchorLists.Any(x => x.Text == count);
         }
 
         public IWebElement GetCartButton(string addToCart)
@@ -44,7 +44,7 @@ namespace SauceDemo3
 
         public string CountCartArticle(string counter)
         {
-            return driver.FindElement(By.ClassName("fa-layers-counter")).Text;
+            return driver.FindElement(By.ClassName(counter)).Text;
             // count.Click();
             //count.Text;
             //count.GetProperty("InnerText").ToString();
