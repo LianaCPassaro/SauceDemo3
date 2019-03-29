@@ -84,8 +84,7 @@ namespace SauceDemo3
             mainPage = new MainPageObject(driver);
             mainPage.ClickCartButton("btn_primary");
             mainPage.ClickCartButton("btn_secondary");
-            IWebElement element = mainPage.FindCountCart("fa-layers-counter");
-            Assert.IsNull(element);
+            Assert.IsFalse(mainPage.FindCountCart("fa-layers-counter"));
         }
 
 
