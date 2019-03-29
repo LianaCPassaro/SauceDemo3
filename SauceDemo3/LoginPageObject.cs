@@ -54,6 +54,11 @@ public class LoginPageObject
     {
         GetButton(btnLogin).Click();
     }
+    public IWebElement FindCssElement(string btnLogin)
+    {
+        return driver.FindElement(By.CssSelector(btnLogin));
+    }
+
 
 
 }

@@ -17,7 +17,6 @@ namespace SauceDemo3
     {
         IWebDriver driver;
         LoginPageObject login;
-        MainPageObject mainPage;
 
         [TestInitialize]
         public void TestSetUp()
@@ -25,51 +24,45 @@ namespace SauceDemo3
             driver = new ChromeDriver();
             login = new LoginPageObject(driver);
             login.SetUrl("https://www.saucedemo.com/");
+        }
+
+        [TestMethod]
+        public void VerifyMessageEmptyUserPass()
+        {
+            login.SetButton("btn_action");
+            IWebElement error = login.FindCssElement("h3[data-test=\"error\"]");
+            Assert.AreEqual(error.Text, "Epic sadface: Username is required");
+        }
+        [TestMethod]
+        public void VerifyMessageOnlyEmptyUser()
+        {
+            login.SetInput("password", "secret_sauce");
+            login.SetButton("btn_action");
+            IWebElement error = login.FindCssElement("h3[data-test=\"error\"]");
+            Assert.AreEqual(error.Text, "Epic sadface: Username is required");
+        }
+
+        [TestMethod]
+        public void VerifyMessageOnlyEmptyPass()
+        {
+            login.SetInput("user-name", "standard_user");
+            login.SetButton("btn_action");
+            IWebElement error = login.FindCssElement("h3[data-test=\"error\"]");
+            Assert.AreEqual(error.Text, "Epic sadface: Password is required");
+        }
+        [TestMethod]
+        public void VerifySuccessLogin()
+        {
             login.SetInput("user-name", "standard_user");
             login.SetInput("password", "secret_sauce");
             login.SetButton("btn_action");
+            Assert.AreEqual(login.GetURL(), "https://www.saucedemo.com/inventory.html");
         }
 
-        [TestMethod]
-        public void VerifySuccessLogin()
-        {          
-            Assert.AreEqual(login.GetURL(),"https://www.saucedemo.com/inventory.html");
-        }
-        [TestMethod]
-        public void ArticlePresent()
-        {
-            mainPage = new MainPageObject(driver);
-
-            IWebElement articleName = mainPage.FindArticle("Sauce Labs Onesie");
-            Assert.IsNotNull(articleName.Text,"The article was not been found");
-        }
-        [TestMethod]
-        public void VerifyAccesToDetail()
-        {
-            mainPage = new MainPageObject(driver);
-            IWebElement articleName = mainPage.FindArticle("Sauce Labs Onesie");
-            if (articleName.Text != "null")
-            {
-                articleName.Click();
-                Assert.AreEqual(login.GetURL(), "https://www.saucedemo.com/inventory-item.html?id=2");
-            }
-            else
-            {
-                throw new System.ArgumentException("Parameter cannot be null", articleName.Text);
-            }
-        }
-        [TestMethod]
-        public void AddToCart()
-        {
-         mainPage = new MainPageObject(driver);
-         mainPage.ClickCartButton("btn_inventory");
-         Assert.AreEqual(mainPage.CountCartArticle("fa-layers-counter"), "1");
-        }
-
-    [TestCleanup]
+        [TestCleanup]
         public void TearDown()
         {
-           // driver.Quit();
+            //driver.Quit();
         }
     }
 }

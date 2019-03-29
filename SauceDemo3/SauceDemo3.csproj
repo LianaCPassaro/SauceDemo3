@@ -60,6 +60,7 @@
     <Compile Include="LoginPageObject.cs" />
     <Compile Include="MainPageObject.cs" />
     <Compile Include="SauceLogin.cs" />
+    <Compile Include="SauceMain.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
