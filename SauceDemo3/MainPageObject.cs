@@ -25,6 +25,13 @@ namespace SauceDemo3
 
             return anchorLists.FirstOrDefault(x => x.Text == description);
         }
+        public IWebElement FindCountCart(string description)
+        {
+            ReadOnlyCollection<IWebElement> anchorLists = driver.FindElements(By.ClassName("fa-layers-counter"));
+
+            return anchorLists.FirstOrDefault(x => x.Text == description);
+        }
+
         public IWebElement GetCartButton(string addToCart)
         {
             return driver.FindElement(By.ClassName(addToCart));
@@ -43,6 +50,11 @@ namespace SauceDemo3
             //count.GetProperty("InnerText").ToString();
            //  count;
 
+        }
+
+        public IWebElement FindClassElement(string btn)
+        {
+            return driver.FindElement(By.ClassName(btn));
         }
     }
 }

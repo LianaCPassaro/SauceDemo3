@@ -54,14 +54,42 @@ namespace SauceDemo3
             }
         }
         [TestMethod]
-        public void AddToCart()
+        public void AddToCartAction()
         {
          mainPage = new MainPageObject(driver);
-         mainPage.ClickCartButton("btn_inventory");
+         mainPage.ClickCartButton("btn_primary");
          Assert.AreEqual(mainPage.CountCartArticle("fa-layers-counter"), "1");
         }
+        [TestMethod]
+        public void RemoveToCartDisplayed()
+        {
+            mainPage = new MainPageObject(driver);
+            mainPage.ClickCartButton("btn_primary");
+            IWebElement element = mainPage.FindClassElement("btn_secondary");
+            Assert.AreEqual(element.Text, "REMOVE");
+        }
 
-    [TestCleanup]
+        [TestMethod]
+        public void RemoveToCartAction()
+        {
+            mainPage = new MainPageObject(driver);
+            mainPage.ClickCartButton("btn_secondary");
+            IWebElement element = mainPage.FindClassElement("btn_primary");
+            Assert.AreEqual(element.Text, "ADD TO CART");
+        }
+
+        [TestMethod]
+        public void RemoveToCartActionIconCart()
+        {
+            mainPage = new MainPageObject(driver);
+            mainPage.ClickCartButton("btn_primary");
+            mainPage.ClickCartButton("btn_secondary");
+            IWebElement element = mainPage.FindCountCart("fa-layers-counter");
+            Assert.IsNull(element);
+        }
+
+
+        [TestCleanup]
         public void TearDown()
         {
            driver.Quit();
